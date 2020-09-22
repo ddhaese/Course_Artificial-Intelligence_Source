@@ -155,79 +155,7 @@ Figuur 2.1: Het schematisch overzicht van het verloop van een AI project. Te beg
 </ul>
 <p>ZOlang de datawetenschapper de data niet te zien heeft gekregen, is het veiliger om geen uitspraken te doen rond de haalbaarheid van het project.</p>
 <p>Een belangrijk aspect van de analyse is het onderscheid maken tussen de <em>afhankelijke</em> en <em>onafhankelijke</em> variabelen (details zie <a href="#leren-uit-data">Leren uit data</a>). Deze termen dekken trouwens meteen de lading en zijn wat dat betreft beter dan andere Engelstalige termen zoal <em>features</em> en <em>labels</em>. Hieronder staat een uitgewerkt voorbeeld van hoe je dit onderscheid kunt maken. Daarna wordt er een oefening voorgesteld.</p>
-<p>NEGEER ONDERSTAANDE (IS EEN TEST)</p>
-<script>
-  CouchDBRequest = (iMethod, iUrl, iData, iServer, iUser, iPassword) => {
-    var Requester = new XMLHttpRequest();
 
-    Requester.onreadystatechange = function () {
-      console.log(Requester.responseText);
-    }
-
-    Requester.withCredentials = true;
-    Requester.open(iMethod, "http://" + iServer + ":5984/" + iUrl, false);
-    Requester.setRequestHeader("Content-Type", "application/json");
-    Requester.setRequestHeader("Accept", "application/json");
-    Requester.setRequestHeader("Authorization", "Basic " + btoa(iUser + ":" + iPassword));
-    Requester.send(JSON.stringify(iData));
-
-    return (JSON.parse(Requester.responseText))
-  }
-
-  state = {
-    Server: "srv-app-087.alpaca.int",
-    User: "p108657",
-    Password: prompt("Please enter your password")
-  };
-
-  const create_UUID = () => {
-    var dt = new Date().getTime();
-    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      var r = (dt + Math.random() * 16) % 16 | 0;
-      dt = Math.floor(dt / 16);
-      return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-    });
-    return uuid;
-  }
-
-  const addDocumentTest = async event => {
-    event.preventDefault();
-    event.stopPropagation();
-
-    const answerElement = document.querySelector("#hgtg");
-
-    const data = {
-      course: "Artificial Intelligence",
-      question: "What is the meaning of life, the universe and everything?",
-      answer: answerElement.value
-    };
-
-    const result = await CouchDBRequest("PUT", "answers/" + create_UUID(), data,
-      this.state.Server, this.state.User, this.state.Password);
-
-    if (result.ok) {
-      answerElement.classList.add("success")
-    }
-
-    return false;
-  }
-
-  window.onload = function () {
-    const button = document.querySelector("#sendAnswer");
-    button.addEventListener("click", addDocumentTest);
-  }
-</script>
-<form>
-<label for="hgtg">What is the answer to life, the universe and everything?</label>
-<input type="text" name="hgtg" id="hgtg">
-<input type="button" value="doorsturen" id="sendAnswer">
-</form>
-
-<div id="refs" class="references">
-<div>
-<p>Li, C., 2017. Improve r’s performance using juliacall with mandelbrot set example [WWW Document] <em>[Online; accessed 2020-09-14]</em>. URL <a href="https://github.com/Non-Contradiction/JuliaCall/tree/master/example/mandelbrot">https://github.com/Non-Contradiction/JuliaCall/tree/master/example/mandelbrot</a></p>
-</div>
-</div>
 </div>
 </div>
             </section>
