@@ -1,6 +1,6 @@
 # Artificial Intelligence
 
-## Language {-}
+## Language
 
 The course is in Dutch.
 
